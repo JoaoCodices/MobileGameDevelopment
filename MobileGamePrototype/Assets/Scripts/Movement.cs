@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
             if (touch.phase == TouchPhase.Began && Time.time - lastTapTime < doubleTapInterval)
             {
                 // Perform the jump action when a double tap is detected.
-                if (transform.position.y < 0.63f)
+                if (transform.position.y < 0.67f)
                 {
                     Jump();
                     Debug.Log("Double Tap");
@@ -52,71 +52,73 @@ public class Movement : MonoBehaviour
             }
         }
 
-        //// Check for touch input.
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
+        // Check for touch input.
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
 
-        //    // Detect the beginning of a swipe.
-        //    if (touch.phase == TouchPhase.Began)
-        //    {
-        //        touchStartPos = touch.position;
-        //        isSwiping = true;
-        //    }
+            // Detect the beginning of a swipe.
+            if (touch.phase == TouchPhase.Began)
+            {
+                touchStartPos = touch.position;
+                isSwiping = true;
+            }
 
-        //    // Detect the end of a swipe.
-        //    if (touch.phase == TouchPhase.Ended)
-        //    {
-        //        touchEndPos = touch.position;
-        //        isSwiping = false;
+            // Detect the end of a swipe.
+            if (touch.phase == TouchPhase.Ended)
+            {
+                touchEndPos = touch.position;
+                isSwiping = false;
 
-        //        // Calculate the swipe direction vector.
-        //        Vector2 swipeDirection = touchEndPos - touchStartPos;
-        //        float absX=Mathf.Abs(swipeDirection.x);
-        //        float absY = Mathf.Abs(swipeDirection.y);
-        //        Debug.Log(swipeDirection);
+                // Calculate the swipe direction vector.
+                Vector2 swipeDirection = touchEndPos - touchStartPos;
 
 
-        //        // Check if the swipe distance is greater than a threshold (to avoid accidental swipes).
-        //        if (swipeDirection.magnitude >= 50.0f) // Adjust the threshold as needed.
-        //        {
-        //            //X-AXIS
-        //            //Right
-        //            if (absX > absY && swipeDirection.x > 0.0f && transform.position.x < 2.4f)
-        //            {
-        //                Vector3 targetPosition = transform.position + new Vector3(moveDistance, 0, 0);
 
-        //                // Move the GameObject to the target position.
-        //                transform.position = targetPosition;
-        //            }
-        //            //Left
-        //            else if (absX > absY && swipeDirection.x < 0.0f && transform.position.z > -2.4f)
-        //            {
-        //                Vector3 targetPosition = transform.position + new Vector3(moveDistance * -1, 0, 0);
+                // Check if the swipe distance is greater than a threshold (to avoid accidental swipes).
+                if (swipeDirection.magnitude >= 50.0f) // Adjust the threshold as needed.
+                {
+                    float absX = Mathf.Abs(swipeDirection.x);
+                    float absY = Mathf.Abs(swipeDirection.y);
+                    Debug.Log(swipeDirection);
+                    //X-AXIS
+                    //Right
+                    if (absX > absY && swipeDirection.x > 0.0f && transform.position.x < 2.4f)
+                    {
+                        Vector3 targetPosition = transform.position + new Vector3(moveDistance, 0, 0);
 
-        //                // Move the GameObject to the target position.
-        //                transform.position = targetPosition;
-        //            }
-        //            //Z-AXIS
-        //            //Left
-        //            if (absX < absY && swipeDirection.y > 0.0f && transform.position.z < 2.4f)
-        //            {
-        //                Vector3 targetPosition = transform.position + new Vector3(0, 0, moveDistance);
+                        // Move the GameObject to the target position.
+                        transform.position = targetPosition;
+                    }
+                    //Left
+                    else if (absX > absY && swipeDirection.x < 0.0f && transform.position.z > -2.4f)
+                    {
+                        Vector3 targetPosition = transform.position + new Vector3(moveDistance * -1, 0, 0);
 
-        //                // Move the GameObject to the target position.
+                        // Move the GameObject to the target position.
+                        transform.position = targetPosition;
+                    }
+                    //Z-AXIS
+                    //Left
+                    if (absX < absY && swipeDirection.y > 0.0f && transform.position.z < 2.4f)
+                    {
+                        Vector3 targetPosition = transform.position + new Vector3(0, 0, moveDistance);
 
-        //                transform.position = targetPosition;
-        //            }
-        //            //Right
-        //            else if (absX < absY && swipeDirection.y < 0.0f && transform.position.z > -2.4f)
-        //            {
-        //                Vector3 targetPosition = transform.position + new Vector3(0, 0, moveDistance * -1);
+                        // Move the GameObject to the target position.
 
-        //                // Move the GameObject to the target position.
-        //                transform.position = targetPosition;
-        //            }
-        //        }
-        //    }
-        //}
+                        transform.position = targetPosition;
+                    }
+                    //Right
+                    else if (absX < absY && swipeDirection.y < 0.0f && transform.position.z > -2.4f)
+                    {
+                        Vector3 targetPosition = transform.position + new Vector3(0, 0, moveDistance * -1);
+
+                        // Move the GameObject to the target position.
+                        transform.position = targetPosition;
+                    }
+                }
+            }
+        }
     }
 }
+

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 0065585f0ea164248bea9bc8a51b6969
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rotateButton: {fileID: 6262116800200154947, guid: 132f24754cb1d84449ca538dfcd6aca1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
