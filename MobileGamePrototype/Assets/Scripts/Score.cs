@@ -7,13 +7,16 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     public TMP_Text scoreText; // Use TMP_Text for TextMeshProUGUI
+    public TMP_Text livesText;
     public float scoreRate = 1.0f; // Score increase rate in points per second
-    private float score = 0.0f;
+    public float score = 0.0f;
+    public int lives = 3;
 
     private void Start()
     {
         // Initialize the score and update the TextMeshProUGUI Text
         score = 0.0f;
+        lives = 3;
         UpdateScoreText();
     }
 
@@ -30,5 +33,6 @@ public class Score : MonoBehaviour
     {
         // Update the TextMeshProUGUI Text element with the current score as a string
         scoreText.text = "Score: " + Mathf.RoundToInt(score).ToString();
+        livesText.text = "Lives: " + Mathf.RoundToInt(lives).ToString();
     }
 }

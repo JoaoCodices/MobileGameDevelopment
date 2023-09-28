@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour
+public class CoinsSpawner : MonoBehaviour
 {
-    public GameObject cubePrefab; // Reference to the cube prefab
+    public GameObject coinsPrefab; // Reference to the cube prefab
     public List<Transform> spawnPositions; // List of spawn position GameObjects
     public float minSpawnDelay = 2.0f; // Minimum time delay in seconds
     public float maxSpawnDelay = 5.0f; // Maximum time delay in seconds
@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
         // Check if it's time to spawn a cube
         if (Time.time >= nextSpawnTime)
         {
-            SpawnCube();
+            SpawnCoins();
             SetNextSpawnTime(); // Set the next spawn time with a random delay
         }
         if (transform.position.y < 0)
@@ -40,9 +40,9 @@ public class ObstacleSpawner : MonoBehaviour
         nextSpawnTime = Time.time + randomSpawnDelay;
     }
 
-    public void SpawnCube()
+    public void SpawnCoins()
     {
-        if (cubePrefab != null && spawnPositions.Count > 0)
+        if (coinsPrefab != null && spawnPositions.Count > 0)
         {
             // Randomly select a spawn position from the list
             int randomIndex = Random.Range(0, spawnPositions.Count);
@@ -52,11 +52,11 @@ public class ObstacleSpawner : MonoBehaviour
             Vector3 spawnPositionWithOffset = selectedSpawnPosition.position + new Vector3(0, yOffset, 0);
 
             // Instantiate the cube prefab at the modified spawn position
-            Instantiate(cubePrefab, spawnPositionWithOffset, Quaternion.identity);
+            Instantiate(coinsPrefab, spawnPositionWithOffset, Quaternion.identity);
         }
         else
         {
-            Debug.LogWarning("Cube prefab or spawn positions are not assigned!");
+            Debug.LogWarning("Coins prefab or spawn positions are not assigned!");
         }
     }
 }

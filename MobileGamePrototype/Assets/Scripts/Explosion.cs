@@ -14,6 +14,7 @@ public class Explosion : MonoBehaviour
     public float explosionRadius = 4f;
     public float explosionUpward = 0.4f;
 
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +34,10 @@ public class Explosion : MonoBehaviour
         if (collision.gameObject.CompareTag("Tile") || collision.gameObject.CompareTag("P1") || collision.gameObject.CompareTag("Coin"))
         {
             explode();
+            if (collision.gameObject.CompareTag("P1"))
+            {
+                collision.gameObject.GetComponent<Score>().lives--;
+            }
         }
     }
 
@@ -83,5 +88,6 @@ public class Explosion : MonoBehaviour
         // Add rigidbody and set mass
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
+        piece.AddComponent<CleanUp>();
     }
 }

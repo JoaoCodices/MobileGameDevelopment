@@ -10,11 +10,12 @@ public class Shake : MonoBehaviour
     private bool isRotating = false;
 
     // Add a reference to the button in the Inspector
-    public Button rotateButton;
+    private Button rotateButton;
 
 
     private void Start()
     {
+        rotateButton = GameObject.FindGameObjectWithTag("RotateButton").GetComponent<Button>();
         if (rotateButton != null)
         {
             rotateButton.onClick.AddListener(StartRotation);
@@ -49,7 +50,7 @@ public class Shake : MonoBehaviour
     }
 
     // Function to start the rotation when the button is clicked
-    private void StartRotation()
+    public void StartRotation()
     {
         isRotating = true;
     }

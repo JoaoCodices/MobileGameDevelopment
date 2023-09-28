@@ -91,7 +91,7 @@ public class Movement : MonoBehaviour
                         transform.position = targetPosition;
                     }
                     //Left
-                    else if (absX > absY && swipeDirection.x < 0.0f && transform.position.z > -2.4f)
+                    else if (absX > absY && swipeDirection.x < 0.0f && transform.position.x > -2.4f)
                     {
                         Vector3 targetPosition = transform.position + new Vector3(moveDistance * -1, 0, 0);
 
