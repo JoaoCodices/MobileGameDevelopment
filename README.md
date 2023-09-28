@@ -1,7 +1,23 @@
 # MobileGameDevelopment
  Work from Mobile Games Development Module
 # Mobile Game Idea
-##
+## HyperCasual Infinite Survival Game
+A Game where the player has to move survive on a set of tiles for as long as possible, collecting coins that win you points and dodging falling objects that block the tiles and hurt the player. HyperCasual Game that the player can quickly open and start playing. High replayability since the gameplay is always randomized and with increasing difficulty for hardcore gamers.
+
+### Inputs
+- Player swipes across the screen to move in the direction of the swipe to the next tile;
+- Player Double Taps the screen to jump + combined with a swipe to move 2 Tiles(skipping 1 tile);
+- Player Shakes phone to rotate the tiles upside down and clear the tiles covered in rubble from the fallen obstacles;
+
+### Monetization
+- In-App Purchases of extra Lives and Map & Player Re-Skins;
+- ADs for 1 extra life once player runs out. ADs everytime the player ends loses;
+- ADs when the player closes an Active Game and then returns, with option to continue last active game for watching an AD;
+  
+### Analytics
+- Analytics on when the player is most likely to watch an AD to continue playing;
+- Analytics on average playtime before engaging in In-App purchases;
+- Analytics on when the player 1st checks the store;
 
 
 # Development Log
