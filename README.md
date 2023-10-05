@@ -44,3 +44,14 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 - Added Coins to the scene that the player can collect by stepping on, these add score to the players Highscore. Get destroyed by the obstacles when they land on a coin.
 
 ![SS_2](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/0d06241e-f5d5-4dd4-949b-48119eb8b3bd)
+
+
+## Week 3
+
+## Movement 
+- Changed the movement script to now only accept diagonal swipes, which dictate the direction of movement for the player, also added a deadzone for swipes, meaning the player has to swipe in a significant direction and swipes to closely aligned with the y and x axis will be ignored.
+
+## Obstruction Detection
+- Started working on the player detection for the obstructed tiles using raycast sensors for collisions.
+
+![SS_3](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/15ffaf09-2b5c-4646-a973-991fbb64397d)
