@@ -48,10 +48,10 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 
 ## Week 3
 
-## Movement 
+### Movement 
 - Changed the movement script to now only accept diagonal swipes, which dictate the direction of movement for the player, also added a deadzone for swipes, meaning the player has to swipe in a significant direction and swipes to closely aligned with the y and x axis will be ignored.
 
-## Obstruction Detection
+### Obstruction Detection
 - Started working on the player detection for the obstructed tiles using raycast sensors for collisions.
 
 ![SS_3](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/15ffaf09-2b5c-4646-a973-991fbb64397d)
