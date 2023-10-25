@@ -10,6 +10,8 @@ public class Explosion : MonoBehaviour
     float cubesPivotDistance;
     Vector3 cubesPivot;
 
+    public GameObject cubeMesh;
+
     public float explosionForce = 50f;
     public float explosionRadius = 4f;
     public float explosionUpward = 0.4f;
@@ -80,6 +82,7 @@ public class Explosion : MonoBehaviour
         // Create piece
         GameObject piece;
         piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //piece = GameObject.Instantiate(cubeMesh);
 
         // Set piece position and scale
         piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
