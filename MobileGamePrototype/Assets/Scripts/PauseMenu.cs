@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
     public Texture2D Tex_2;
     public Texture2D Tex_3;
 
-
+    Scene scene;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,18 @@ public class PauseMenu : MonoBehaviour
         //Base Colour
         Colour_0.color = new Color(0.988f, 0.941f, 0.765f);
         //Camera Background
-        MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
+
+        scene = SceneManager.GetActiveScene();
+        if (scene.name == "IntroScene")
+        {
+            MyCamera.backgroundColor = new Color(0.961f, 0.816f, 0.541f);
+            
+        }
+        else
+        {
+            MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
+        }
+        
     }
 
     public void ChangeTheme()
@@ -75,7 +86,14 @@ public class PauseMenu : MonoBehaviour
 
                 TileMat.mainTexture = Tex_0;
                 Colour_0.color = new Color(0.988f, 0.941f, 0.765f);
-                MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
+                if (scene.name == "MainScene")
+                {
+                    MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
+                }
+                else
+                {
+                    MyCamera.backgroundColor = new Color(0.961f, 0.816f, 0.541f);
+                }
                 Debug.Log("Active 1");
                 break;
             //PURPLE
@@ -85,6 +103,7 @@ public class PauseMenu : MonoBehaviour
 
                 TileMat.mainTexture = Tex_1;
                 Colour_0.color = new Color(0.906f, 0.761f, 0.949f);
+
                 MyCamera.backgroundColor = new Color(0.906f, 0.761f, 0.949f);
                 Debug.Log("Active 2");
                 break;
