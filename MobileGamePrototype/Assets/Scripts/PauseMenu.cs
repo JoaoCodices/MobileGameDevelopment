@@ -14,13 +14,25 @@ public class PauseMenu : MonoBehaviour
     public Button pauseButton;
     public Button themeButton;
     public TMP_Text soundButton;
+    
+    public Camera MyCamera;
 
     private int Theme = 0;
-
+    //Base
+    public Material Colour_0;
     //Primary
     public Material Colour_1;
     //Secondary
     public Material Colour_2;
+
+
+    public Material TileMat;
+
+    public Texture2D Tex_0;
+    public Texture2D Tex_1;
+    public Texture2D Tex_2;
+    public Texture2D Tex_3;
+
 
 
     // Start is called before the first frame update
@@ -30,10 +42,15 @@ public class PauseMenu : MonoBehaviour
         settingsMenu.SetActive(false);
         pauseButton.onClick.AddListener(PauseGame);
 
+        TileMat.mainTexture = Tex_0;
+
         Debug.Log("Theme n: " +  Theme);
         Colour_1.color = new Color(0.961f,0.816f, 0.541f, 1.0f);
         Colour_2.color = new Color(0.643f, 0.502f, 0.263f, 1.0f);
-
+        //Base Colour
+        Colour_0.color = new Color(0.988f, 0.941f, 0.765f);
+        //Camera Background
+        MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
     }
 
     public void ChangeTheme()
@@ -55,24 +72,40 @@ public class PauseMenu : MonoBehaviour
             case 0:
                 Colour_1.color = new Color(0.961f, 0.816f, 0.541f, 1.0f);
                 Colour_2.color = new Color(0.643f, 0.502f, 0.263f, 1.0f);
+
+                TileMat.mainTexture = Tex_0;
+                Colour_0.color = new Color(0.988f, 0.941f, 0.765f);
+                MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
                 Debug.Log("Active 1");
                 break;
             //PURPLE
             case 1:
-                Colour_1.color = new Color(0.961f, 0.816f, 0.541f, 1.0f);
-                Colour_2.color = new Color(0.643f, 0.502f, 0.263f, 1.0f);
+                Colour_1.color = new Color(0.757f, 0.537f, 0.961f, 1.0f);
+                Colour_2.color = new Color(0.451f, 0.263f, 0.639f, 1.0f);
+
+                TileMat.mainTexture = Tex_1;
+                Colour_0.color = new Color(0.906f, 0.761f, 0.949f);
+                MyCamera.backgroundColor = new Color(0.906f, 0.761f, 0.949f);
                 Debug.Log("Active 2");
                 break;
             //GREEN
             case 2:
-                Colour_1.color = new Color(0.961f, 0.816f, 0.541f, 1.0f);
-                Colour_2.color = new Color(0.643f, 0.502f, 0.263f, 1.0f);
+                Colour_1.color = new Color(0.741f, 0.961f, 0.537f, 1.0f);
+                Colour_2.color = new Color(0.451f, 0.639f, 0.263f, 1.0f);
+
+                TileMat.mainTexture = Tex_2;
+                Colour_0.color = new Color(0.843f, 0.988f, 0.761f);
+                MyCamera.backgroundColor = new Color(0.843f, 0.988f, 0.761f);
                 Debug.Log("Active 3");
                 break;
             //BLUE
             case 3:
-                Colour_1.color = new Color(0.961f, 0.816f, 0.541f, 1.0f);
-                Colour_2.color = new Color(0.643f, 0.502f, 0.263f, 1.0f);
+                Colour_1.color = new Color(0.537f, 0.686f, 0.961f, 1.0f);
+                Colour_2.color = new Color(0.263f, 0.4f, 0.639f, 1.0f);
+
+                TileMat.mainTexture = Tex_3;
+                Colour_0.color = new Color(0.761f, 0.812f, 0.988f);
+                MyCamera.backgroundColor = new Color(0.761f, 0.812f, 0.988f);
                 Debug.Log("Active 4");
                 break;
 
