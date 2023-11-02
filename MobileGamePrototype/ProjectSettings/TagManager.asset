@@ -10,6 +10,7 @@ TagManager:
   - RotateButton
   - Obstacle
   - ScreenShake
+  - Manager
   layers:
   - Default
   - TransparentFX
