@@ -104,7 +104,7 @@ public class AdsBanner : MonoBehaviour
     void OnDestroy()
     {
         // Clean up the listeners:
-        _loadBannerButton.onClick.RemoveAllListeners();
+        //_loadBannerButton.onClick.RemoveAllListeners();
         _showBannerButton.onClick.RemoveAllListeners();
         _hideBannerButton.onClick.RemoveAllListeners();
     }
