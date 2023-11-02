@@ -29,11 +29,15 @@ public class Movement : MonoBehaviour
 
     //
 
+    private ShakeAnimation shake;
+
     void Start()
     {
         currentDirection = up;
         nextPos = Vector3.forward;
         destination = transform.position;
+
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<ShakeAnimation>();
     }
     void Update()
     {
@@ -251,7 +255,11 @@ public class Movement : MonoBehaviour
                     direction = nextPos;
                     canMove = false;
                 }
-
+                else
+                {
+                    shake.ShakeCam();
+                    canMove = false;
+                }
             }
 
         }
@@ -267,7 +275,7 @@ public class Movement : MonoBehaviour
         if(Physics.Raycast(myRay, out hit, rayLength))
         {
             if(hit.collider.tag == "Obstacle")
-            {
+            {               
                 return false;
             }
         }
