@@ -190,4 +190,6 @@ public class PauseMenu : MonoBehaviour
         storeMenu.SetActive(true);
         Time.timeScale = 0f;
     }
+
+
 }

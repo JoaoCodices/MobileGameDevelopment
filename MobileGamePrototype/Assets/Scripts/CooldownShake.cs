@@ -6,9 +6,9 @@ using TMPro;
 
 public class CooldownShake : MonoBehaviour
 {
-    private GameObject[] Shake;
     public float time;
     public TMP_Text cdText;
+    public TMP_Text StoreshakeText;
     public Image Fill;
     public float max;
     public int shakeCounter;
@@ -22,6 +22,8 @@ public class CooldownShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StoreshakeText.text= "Shakes: " + shakeCounter;
+
         time -= Time.deltaTime;
         if (shakeCounter == 0)
         {
@@ -31,15 +33,14 @@ public class CooldownShake : MonoBehaviour
         else
         {
             cdText.text = "" + shakeCounter;
-            cdText.color = new Color(0.643f, 0.502f, 0.263f, 1f);
+            cdText.color = Color.white;
         }
         Fill.fillAmount = time / max;
         if (time < 0)
         {
             time = max;
-            shakeCounter++;
-            Shake = GameObject.FindGameObjectsWithTag("Tile");
-            
+            shakeCounter++;           
         }
     }
+
 }

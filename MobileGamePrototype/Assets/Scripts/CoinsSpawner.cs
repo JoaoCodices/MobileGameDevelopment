@@ -17,20 +17,14 @@ public class CoinsSpawner : MonoBehaviour
     private float nextSpawnTime;
     private float randomSpawnDelay;
 
-
-    public TMP_Text coinsText;
-    public int Coins = 0;
-
     private void Start()
     {
-        coinsText.text = "Coins: " + Mathf.RoundToInt(Coins).ToString();
         // Initialize the first spawn time with a random delay
         SetNextSpawnTime();
     }
 
     private void Update()
-    {
-        coinsText.text = "Coins: " + Mathf.RoundToInt(Coins).ToString();
+    {       
         // Check if it's time to spawn a cube
         if (Time.time >= nextSpawnTime)
         {

@@ -9,15 +9,20 @@ public class Score : MonoBehaviour
     public TMP_Text scoreText; 
     public TMP_Text livesText;
     public TMP_Text StorelivesText;
+    public TMP_Text StorecoinsText;
     public float scoreRate = 1.0f; // Score increase rate in points per second
     public float score = 0.0f;
     public int lives = 3;
+    public int coins;
+    private GameObject Manager;
 
     private void Start()
     {
         // Initialize the score and update the TextMeshProUGUI Text
         score = 0.0f;
         lives = 3;
+
+        Manager = GameObject.FindGameObjectWithTag("Manager");
         UpdateScoreText();
     }
 
@@ -36,5 +41,22 @@ public class Score : MonoBehaviour
         scoreText.text = "Score: " + Mathf.RoundToInt(score).ToString();
         livesText.text = "Lives: " + Mathf.RoundToInt(lives).ToString();
         StorelivesText.text = "Lives: " + Mathf.RoundToInt(lives).ToString();
-}
+        StorecoinsText.text = "Coins: " + Mathf.RoundToInt(coins).ToString();
+    }
+    public void BuyLives()
+    {
+        if (coins >= 10)
+        {
+            coins -= 10;
+            lives++;
+        }
+    }
+    public void BuyShakes()
+    {
+        if (coins >= 5)
+        {
+            coins -= 5;
+            Manager.gameObject.GetComponent<CooldownShake>().shakeCounter ++;
+        }
+    }
 }
