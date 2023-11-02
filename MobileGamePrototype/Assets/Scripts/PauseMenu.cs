@@ -5,16 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused;
     public GameObject pauseMenu;
+    public GameObject storeMenu;
     public GameObject settingsMenu;
     public Button pauseButton;
+    public Button storeButton;
     public Button themeButton;
     public TMP_Text soundButton;
-    
+
+
     public Camera MyCamera;
 
     private int Theme = 0;
@@ -39,10 +44,13 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
+        storeMenu.SetActive(false);
         settingsMenu.SetActive(false);
         pauseButton.onClick.AddListener(PauseGame);
-
+        storeButton.onClick.AddListener(OpenStore);
         TileMat.mainTexture = Tex_0;
+
+       
 
         Debug.Log("Theme n: " +  Theme);
         Colour_1.color = new Color(0.961f,0.816f, 0.541f, 1.0f);
@@ -63,7 +71,6 @@ public class PauseMenu : MonoBehaviour
         }
         
     }
-
     public void ChangeTheme()
     {
         if (Theme < 3)
@@ -139,9 +146,6 @@ public class PauseMenu : MonoBehaviour
         //pauseButton.image.color = Colour_1;
     }
 
-    // Update is called once per frame
-
-
     //PAUSE MENU
     public void PauseGame()
     {
@@ -155,6 +159,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        storeMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -177,5 +182,12 @@ public class PauseMenu : MonoBehaviour
             soundButton.text = "Sound On";
         }
 
+    }
+
+    //STORE MENU
+    public void OpenStore()
+    {
+        storeMenu.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

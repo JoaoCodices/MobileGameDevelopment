@@ -92,5 +92,6 @@ public class Explosion : MonoBehaviour
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
         piece.AddComponent<CleanUp>();
+        piece.gameObject.tag = "Obstacle";
     }
 }
