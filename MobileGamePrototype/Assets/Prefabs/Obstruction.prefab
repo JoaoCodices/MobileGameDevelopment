@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2487843706195388697}
   - component: {fileID: 8077075967278127029}
   - component: {fileID: 6434192915113884390}
+  - component: {fileID: -1666385050363760480}
   m_Layer: 0
   m_Name: Obstruction
   m_TagString: Untagged
@@ -147,8 +148,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeSize: 0.1
-  cubesInRow: 5
+  cubesInRow: 4
   cubeMesh: {fileID: 4029688240432147956}
-  explosionForce: 10
-  explosionRadius: 2
+  explosionForce: 5
+  explosionRadius: 1
   explosionUpward: 0.76
+--- !u!114 &-1666385050363760480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029688240432147956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092459b6d228ed446b40b7a00a178333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

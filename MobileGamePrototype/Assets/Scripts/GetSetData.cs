@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class SetGetData : MonoBehaviour
 {
-    public int HighScore;
-    public int Time;
-    public int Lives;
-
-    // Start is called before the first frame update void Start(){}
-    // Update is called once per frame void Update(){}
+    int HighScore;
+    int Time;
+    int Lives;
 
     public void SaveOnClick(int _Lives, int _Time, int _HighScore)
     {

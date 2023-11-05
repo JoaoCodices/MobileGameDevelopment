@@ -6,14 +6,21 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    public TMP_Text scoreText; 
+    //UI
+    public TMP_Text scoreText;
+    public TMP_Text coinsText;
+    public TMP_Text hsText;
     public TMP_Text livesText;
+    //STORE
     public TMP_Text StorelivesText;
     public TMP_Text StorecoinsText;
+    //
     public float scoreRate = 1.0f; // Score increase rate in points per second
     public float score = 0.0f;
+    private int highScore;
     public int lives = 3;
     public int coins;
+    //
     private GameObject Manager;
 
     private void Start()
@@ -23,6 +30,8 @@ public class Score : MonoBehaviour
         lives = 3;
 
         Manager = GameObject.FindGameObjectWithTag("Manager");
+
+        highScore = Manager.GetComponent<SetGetData>().LoadHighscore();
         UpdateScoreText();
     }
 
@@ -38,10 +47,13 @@ public class Score : MonoBehaviour
     private void UpdateScoreText()
     {
         // Update the TextMeshProUGUI Text element with the current score as a string
-        scoreText.text = "Score: " + Mathf.RoundToInt(score).ToString();
-        livesText.text = "Lives: " + Mathf.RoundToInt(lives).ToString();
-        StorelivesText.text = "Lives: " + Mathf.RoundToInt(lives).ToString();
-        StorecoinsText.text = "Coins: " + Mathf.RoundToInt(coins).ToString();
+        //int Score =  Manager.GetComponent<SetGetData>().LoadHighscore();
+        hsText.text = "HS: " + Mathf.RoundToInt(highScore).ToString();
+        scoreText.text = "SCORE: " + Mathf.RoundToInt(score).ToString();
+        livesText.text = "" + Mathf.RoundToInt(lives).ToString();
+        StorelivesText.text = "LIVES: " + Mathf.RoundToInt(lives).ToString();
+        coinsText.text= "COINS: " + Mathf.RoundToInt(coins).ToString();
+        StorecoinsText.text = "COINS: " + Mathf.RoundToInt(coins).ToString();
     }
     public void BuyLives()
     {
@@ -57,6 +69,15 @@ public class Score : MonoBehaviour
         {
             coins -= 5;
             Manager.gameObject.GetComponent<CooldownShake>().shakeCounter ++;
+        }
+    }
+
+    public void StoreScore()
+    {
+        if (score > highScore)
+        {
+            this.GetComponent<SetGetData>().SaveOnClick((int)Time.deltaTime, lives, (int)score);
+            Debug.Log("New HighScore");
         }
     }
 }

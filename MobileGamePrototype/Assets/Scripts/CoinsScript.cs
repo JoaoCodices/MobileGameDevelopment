@@ -21,7 +21,8 @@ public class CoinsScript : MonoBehaviour
         
     }
     private void OnCollisionEnter(Collision collision)
-    {            
+    {
+        Debug.Log("Collision");
         if (collision.gameObject.CompareTag("P1"))
         {
             temp_Score = collision.gameObject.GetComponent<Score>().score;

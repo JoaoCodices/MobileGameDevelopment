@@ -64,5 +64,4 @@ public class DataManager : MonoBehaviour
             Lives = data.Lives;
         }
     }
-
 }

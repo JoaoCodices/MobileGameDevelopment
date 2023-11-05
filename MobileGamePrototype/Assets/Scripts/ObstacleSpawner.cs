@@ -22,15 +22,13 @@ public class ObstacleSpawner : MonoBehaviour
     private void Update()
     {
         // Check if it's time to spawn a cube
-        if (Time.time >= nextSpawnTime)
+        if (Time.time >= nextSpawnTime && GameObject.FindGameObjectWithTag("Tile").GetComponent<Shake>().isRotating==false)
         {
+            Debug.Log(GameObject.FindGameObjectWithTag("Tile").GetComponent<Shake>().isRotating);
             SpawnCube();
             SetNextSpawnTime(); // Set the next spawn time with a random delay
         }
-        if (transform.position.y < 0)
-        {
-            GameObject.Destroy(gameObject);
-        }
+        
     }
 
     private void SetNextSpawnTime()

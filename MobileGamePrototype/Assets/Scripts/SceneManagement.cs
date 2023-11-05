@@ -7,38 +7,37 @@ using TMPro;
 public class SceneManagement : MonoBehaviour
 {
     public GameObject player;
-
-    public TMP_Text hsText;
-
-    int score;
-
     // Start is called before the first frame update
     void Start()
     {
-        score = this.GetComponent<SetGetData>().LoadHighscore();
-        hsText.text = "HS: " + Mathf.RoundToInt(score).ToString();
+        SetPlayer();
     }
     public void OnPlay()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
-        int score = this.GetComponent<SetGetData>().LoadHighscore();
-        hsText.text = "HS: " + Mathf.RoundToInt(score).ToString();
-
-        
     }
     // Update is called once per frame
-        void Update()
+    void Update()
+    {
+    }
+    public void OnLoss()
+    {
+        SetPlayer();
+        if (player.GetComponent<Score>().lives <= 0)
         {
-            if (player.GetComponent<Score>().lives <= 0)
-            {
-                if(player.GetComponent<Score>().score > score) 
-                {
-                    this.GetComponent<SetGetData>().SaveOnClick((int)Time.deltaTime, player.GetComponent<Score>().lives, (int)player.GetComponent<Score>().score);
-                    Debug.Log("New HighScore");
-                }
-                
-                SceneManager.LoadScene(2, LoadSceneMode.Single);
-            }
-
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
+    }
+    public void SetPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("P1");
+        if (player != null)
+        {       
+            Debug.Log("Player Found!");
+        }
+        else
+        {
+            Debug.Log("No Player Found!");
+        }
+    }
 }

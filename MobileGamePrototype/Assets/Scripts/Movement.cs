@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
 
     private Vector2 touchStartPos;
     private Vector2 touchEndPos;
-    private bool isSwiping = false;
+    //private bool isSwiping = false;
     public float moveDistance = 1.2f; // Adjust this value to change the distance the object moves.
 
     //
@@ -110,7 +110,7 @@ public class Movement : MonoBehaviour
                 {              
                     if(currentSwipe.x < -0.5f && transform.position.x > -2.4f)
                     {
-                        Debug.Log("DOWN LEFT swipe");
+                        //Debug.Log("DOWN LEFT swipe");
 
                         nextPos = Vector3.left + new Vector3(-0.2f, 0f, 0f);
                         currentDirection = left;
@@ -118,7 +118,7 @@ public class Movement : MonoBehaviour
                     }
                     else if(currentSwipe.x > 0.5f && transform.position.z > -2.4f)
                     {                       
-                        Debug.Log("DOWN RIGHT swipe");
+                        //Debug.Log("DOWN RIGHT swipe");
 
                         nextPos = Vector3.back + new Vector3(0f, 0f, -0.2f);
                         currentDirection = down;
@@ -129,7 +129,7 @@ public class Movement : MonoBehaviour
                 {                   
                     if (currentSwipe.x < -0.5f && transform.position.z < 2.4f)
                     {
-                        Debug.Log("UP LEFT swipe");
+                        //Debug.Log("UP LEFT swipe");
 
                         nextPos = Vector3.forward + new Vector3(0f, 0f, 0.2f);
                         currentDirection = up;
@@ -137,7 +137,7 @@ public class Movement : MonoBehaviour
                     }
                     else if (currentSwipe.x > 0.5f && transform.position.x < 2.4f)
                     {
-                        Debug.Log("UP RIGHT swipe");
+                        //Debug.Log("UP RIGHT swipe");
 
                         nextPos = Vector3.right + new Vector3(0.2f, 0f, 0f);
                         currentDirection = right;

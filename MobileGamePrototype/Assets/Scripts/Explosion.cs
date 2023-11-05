@@ -16,10 +16,11 @@ public class Explosion : MonoBehaviour
     public float explosionRadius = 4f;
     public float explosionUpward = 0.4f;
 
-
+    private bool valid;
     // Use this for initialization
     void Start()
     {
+        valid = true;
         // Calculate pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 2;
         // Use this value to create pivot vector)
@@ -33,12 +34,19 @@ public class Explosion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Tile") || collision.gameObject.CompareTag("P1") || collision.gameObject.CompareTag("Coin"))
+        if (valid)
         {
-            explode();
-            if (collision.gameObject.CompareTag("P1"))
+            if (collision.gameObject.CompareTag("Tile") || collision.gameObject.CompareTag("P1") || collision.gameObject.CompareTag("Coin"))
             {
-                collision.gameObject.GetComponent<Score>().lives--;
+                explode();
+                if (collision.gameObject.CompareTag("P1"))
+                {
+                    collision.gameObject.GetComponent<Score>().lives--;
+                }
+                if (collision.gameObject.CompareTag("Coin"))
+                {
+                    Destroy(collision.gameObject);
+                }
             }
         }
     }
@@ -46,8 +54,9 @@ public class Explosion : MonoBehaviour
     public void explode()
     {
         // Make object disappear
-        gameObject.SetActive(false);
-
+        //gameObject.SetActive(false);
+        this.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        valid = false;
         // Loop 3 times to create 5x5x5 pieces in x, y, z coordinates
         for (int x = 0; x < cubesInRow; x++)
         {
@@ -87,11 +96,12 @@ public class Explosion : MonoBehaviour
         // Set piece position and scale
         piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
         piece.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
-
+        
         // Add rigidbody and set mass
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
-        piece.AddComponent<CleanUp>();
+       // piece.AddComponent<CleanUp>();
         piece.gameObject.tag = "Obstacle";
+        piece.transform.SetParent(this.transform);
     }
 }

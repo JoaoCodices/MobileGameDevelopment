@@ -49,11 +49,13 @@ public class PauseMenu : MonoBehaviour
         pauseButton.onClick.AddListener(PauseGame);
         storeButton.onClick.AddListener(OpenStore);
         TileMat.mainTexture = Tex_0;
+        SetTheme();
+    }
+    public void SetTheme()
+    {
 
-       
-
-        Debug.Log("Theme n: " +  Theme);
-        Colour_1.color = new Color(0.961f,0.816f, 0.541f, 1.0f);
+        //Debug.Log("Theme n: " + Theme);
+        Colour_1.color = new Color(0.961f, 0.816f, 0.541f, 1.0f);
         Colour_2.color = new Color(0.643f, 0.502f, 0.263f, 1.0f);
         //Base Colour
         Colour_0.color = new Color(0.988f, 0.941f, 0.765f);
@@ -63,13 +65,11 @@ public class PauseMenu : MonoBehaviour
         if (scene.name == "IntroScene")
         {
             MyCamera.backgroundColor = new Color(0.961f, 0.816f, 0.541f);
-            
         }
         else
         {
             MyCamera.backgroundColor = new Color(0.988f, 0.941f, 0.765f);
         }
-        
     }
     public void ChangeTheme()
     {
@@ -134,16 +134,7 @@ public class PauseMenu : MonoBehaviour
                 MyCamera.backgroundColor = new Color(0.761f, 0.812f, 0.988f);
                 Debug.Log("Active 4");
                 break;
-
         }
-
-
-        //if(Theme == 0)
-        //{
-        //    pauseButton.image.color = Colour_1;
-        //    Debug.Log("Active 1");
-        //}
-        //pauseButton.image.color = Colour_1;
     }
 
     //PAUSE MENU
@@ -154,6 +145,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void MainScene()
     {
+        //this.GetComponent<SceneManagement>().StoreScore();
         SceneManager.LoadScene(0);
     }
     public void ResumeGame()
