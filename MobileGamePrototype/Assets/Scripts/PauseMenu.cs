@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using UnityEngine.SocialPlatforms.Impl;
+//using static UnityEditor.Timeline.TimelinePlaybackControls;
+//using UnityEngine.SocialPlatforms.Impl;
 
 public class PauseMenu : MonoBehaviour
 {

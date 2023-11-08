@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using UnityEngine.SocialPlatforms.Impl;
+//using static UnityEditor.Timeline.TimelinePlaybackControls;
+//using UnityEngine.SocialPlatforms.Impl;
 
 public class CoinsSpawner : MonoBehaviour
 {
