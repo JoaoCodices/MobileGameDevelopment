@@ -21,10 +21,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
+        //bool rotation = GameObject.FindGameObjectWithTag("Tile").GetComponent<Shake>().isRotating;
+        //Debug.Log("Rotation Status: " + rotation);
         // Check if it's time to spawn a cube
-        if (Time.time >= nextSpawnTime && GameObject.FindGameObjectWithTag("Tile").GetComponent<Shake>().isRotating==false)
+        if (Time.time >= nextSpawnTime /*&& rotation==false*/)
         {
-            Debug.Log(GameObject.FindGameObjectWithTag("Tile").GetComponent<Shake>().isRotating);
             SpawnCube();
             SetNextSpawnTime(); // Set the next spawn time with a random delay
         }

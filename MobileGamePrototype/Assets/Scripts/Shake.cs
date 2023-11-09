@@ -63,12 +63,12 @@ public class Shake : MonoBehaviour
         }
     }
 
-    private IEnumerator RotateSequence()
+    public IEnumerator RotateSequence()
     {
         while (true)
         {
             float step = rotationSpeed * Time.deltaTime;
-
+            //Debug.Log("Rotating!");
             if (!isReversing)
             {
                 // Rotate towards the target rotation
@@ -101,25 +101,27 @@ public class Shake : MonoBehaviour
 
     public void StartRotationC()
     {
+        Debug.Log("Rotation Started");
         if (rotationCoroutine == null)
-            rotationCoroutine = StartCoroutine(RotateSequence());
+        {
+            rotationCoroutine = StartCoroutine(RotateSequence());        
+        }                 
     }
 
     public void StopRotation()
     {
+        Debug.Log("Rotation Finished");
         if (rotationCoroutine != null)
         {
             StopCoroutine(rotationCoroutine);
             rotationCoroutine = null;
-            isRotating = false;
-            Debug.Log("Rotation Finished");
+            isRotating = false;       
         }
     }
     public void StartRotation()
     {
         if (shakeCount > 0)
         {
-            isRotating = true;
             Manager.gameObject.GetComponent<CooldownShake>().shakeCounter= shakeCount-1;
             shakeCount=shakeCount-1;
             StartRotationC();
@@ -128,6 +130,15 @@ public class Shake : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isRotating == true)
+        {
+            rotateButton.enabled = false;
+        }
+        else
+        {
+            rotateButton.enabled = true;
+        }
+
         shakeCount = Manager.gameObject.GetComponent<CooldownShake>().shakeCounter;
         //Debug.Log(shakeCount);
         if (isRotating)
