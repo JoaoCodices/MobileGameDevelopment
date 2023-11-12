@@ -10,11 +10,12 @@ public class SceneManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetPlayer();
+       //SetPlayer();
     }
     public void OnPlay()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SetPlayer();
     }
     // Update is called once per frame
     void Update()
@@ -33,11 +34,15 @@ public class SceneManagement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("P1");
         if (player != null)
         {       
-            Debug.Log("Player Found!");
+            
         }
         else
         {
-            Debug.Log("No Player Found!");
+            Debug.LogError("No Player Found!");
         }
+    }
+    public void BacktoStart()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

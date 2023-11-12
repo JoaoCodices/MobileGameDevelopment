@@ -9,9 +9,12 @@ public class DataManager : MonoBehaviour
 
     //Variables that need to be stored
 
-    public int HighScore;
-    public int Time;
-    public int Lives;
+    [HideInInspector] public int HighScore;
+    [HideInInspector] public int Score;
+    [HideInInspector] public int Time;
+    [HideInInspector] public int Lives;
+    [HideInInspector] public int Coins;
+    [HideInInspector] public int Theme;
 
     private void Awake()
     {
@@ -32,8 +35,11 @@ public class DataManager : MonoBehaviour
         //Variables that need to be stored
 
         public int HighScore;
+        public int Score;
         public int Time;
         public int Lives;
+        public int Coins;
+        public int Theme;
     }
 
     public void WriteData()
@@ -42,8 +48,11 @@ public class DataManager : MonoBehaviour
 
         //Variables that need to be stored
         data.HighScore = HighScore;
+        data.Score = Score;
         data.Time = Time;
         data.Lives = Lives;
+        data.Coins = Coins;
+        data.Theme = Theme;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
@@ -60,8 +69,11 @@ public class DataManager : MonoBehaviour
 
             //Variables that need to be stored
             HighScore = data.HighScore;
+            Score = data.Score;
             Time = data.Time;
             Lives = data.Lives;
+            Coins = data.Coins;
+            Theme = data.Theme;
         }
     }
 }

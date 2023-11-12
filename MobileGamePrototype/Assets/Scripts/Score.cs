@@ -47,13 +47,10 @@ public class Score : MonoBehaviour
     private void UpdateScoreText()
     {
         // Update the TextMeshProUGUI Text element with the current score as a string
-        //int Score =  Manager.GetComponent<SetGetData>().LoadHighscore();
         hsText.text = "HS: " + Mathf.RoundToInt(highScore).ToString();
         scoreText.text = "SCORE: " + Mathf.RoundToInt(score).ToString();
         livesText.text = "" + Mathf.RoundToInt(lives).ToString();
-        StorelivesText.text = "LIVES: " + Mathf.RoundToInt(lives).ToString();
-        coinsText.text= "COINS: " + Mathf.RoundToInt(coins).ToString();
-        StorecoinsText.text = "COINS: " + Mathf.RoundToInt(coins).ToString();
+        coinsText.text= "" + Mathf.RoundToInt(coins).ToString();
     }
     public void BuyLives()
     {
@@ -76,7 +73,8 @@ public class Score : MonoBehaviour
     {
         if (score > highScore)
         {
-            this.GetComponent<SetGetData>().SaveOnClick((int)Time.deltaTime, lives, (int)score);
+            highScore = (int)score;
+            this.GetComponent<SetGetData>().SaveOnClick((int)Time.deltaTime, lives, highScore, (int)score, coins, 0);
             Debug.Log("New HighScore");
         }
     }

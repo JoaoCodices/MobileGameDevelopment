@@ -9,10 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1922516182124759689}
-  - component: {fileID: 6339635252882948269}
   - component: {fileID: 4297982857792400272}
   - component: {fileID: 8444446837087645214}
-  - component: {fileID: 916232105068524422}
   - component: {fileID: 7296463787160548155}
   - component: {fileID: 6985347297526437164}
   m_Layer: 0
@@ -35,36 +33,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6339635252882948269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429173873568651227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 670954a824cca2b4bb5c41f2906af15b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  storeMenu: {fileID: 0}
-  settingsMenu: {fileID: 0}
-  pauseButton: {fileID: 0}
-  storeButton: {fileID: 0}
-  themeButton: {fileID: 0}
-  soundButton: {fileID: 0}
-  MyCamera: {fileID: 0}
-  Colour_0: {fileID: 2100000, guid: 8b9001fccda4bc844b457af29a50b55b, type: 2}
-  Colour_1: {fileID: 2100000, guid: 75758ccba2d273947ac594e779f82552, type: 2}
-  Colour_2: {fileID: 2100000, guid: 21fc6259e71e2de4aa96f4981fb153cd, type: 2}
-  TileMat: {fileID: 2100000, guid: fee90075408187548bf9657b03c1e633, type: 2}
-  Tex_0: {fileID: 2800000, guid: 9fc50ad660ee11a43925b4e9b3a542aa, type: 3}
-  Tex_1: {fileID: 2800000, guid: 08c155210ecbd4d49b57cae1fa219628, type: 3}
-  Tex_2: {fileID: 2800000, guid: bbb8bdaf4f5ae0749934bbc49dbc9a4b, type: 3}
-  Tex_3: {fileID: 2800000, guid: 5decbca6c7573cc47a6746152cd8ec40, type: 3}
 --- !u!114 &4297982857792400272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,8 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HighScore: 0
+  Score: 0
   Time: 0
   Lives: 0
+  Coins: 0
+  Theme: 0
 --- !u!114 &8444446837087645214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,19 +65,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90df5d1e056a67041b37988d0cf9be36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &916232105068524422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429173873568651227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b26d57579a7df94d975dc2f0f17ee92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2630468729845247766, guid: 8ed3f2e9a2bf9eb47a26d67a9610d4bb, type: 3}
 --- !u!114 &7296463787160548155
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: cf27e96044a94634ba34378c483c2134
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - settingsMenu: {fileID: 7201186450621040362, guid: dec6dcc9181255a448379e8e141c2bd9, type: 3}
+  - Colour_0: {fileID: 2100000, guid: 8b9001fccda4bc844b457af29a50b55b, type: 2}
+  - Colour_1: {fileID: 2100000, guid: 75758ccba2d273947ac594e779f82552, type: 2}
+  - Colour_2: {fileID: 2100000, guid: 21fc6259e71e2de4aa96f4981fb153cd, type: 2}
+  - TileMat: {fileID: 2100000, guid: fee90075408187548bf9657b03c1e633, type: 2}
+  - Tex_0: {fileID: 2800000, guid: 9fc50ad660ee11a43925b4e9b3a542aa, type: 3}
+  - Tex_1: {fileID: 2800000, guid: 08c155210ecbd4d49b57cae1fa219628, type: 3}
+  - Tex_2: {fileID: 2800000, guid: bbb8bdaf4f5ae0749934bbc49dbc9a4b, type: 3}
+  - Tex_3: {fileID: 2800000, guid: 5decbca6c7573cc47a6746152cd8ec40, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

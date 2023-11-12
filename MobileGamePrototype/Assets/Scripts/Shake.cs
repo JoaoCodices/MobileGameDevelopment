@@ -23,7 +23,7 @@ public class Shake : MonoBehaviour
     
     //rOTATION PARAMETERS
     //public float rotationSpeed = 30.0f; // Set the rotation speed in degrees per second
-    private float currentRotation = 0.0f;
+    //private float currentRotation = 0.0f;
     public bool isRotating = false;
 
     //BUTTON 
@@ -98,16 +98,23 @@ public class Shake : MonoBehaviour
             yield return null;
         }
     }
-
-    public void StartRotationC()
+    //Start Rotation of Tiles
+    public void StartRotation()
     {
-        Debug.Log("Rotation Started");
-        if (rotationCoroutine == null)
+        if (shakeCount > 0)
         {
-            rotationCoroutine = StartCoroutine(RotateSequence());        
-        }                 
+            //Phase 1
+            Manager.gameObject.GetComponent<CooldownShake>().shakeCounter= shakeCount-1;
+            shakeCount=shakeCount-1;
+            //Phase 2
+            Debug.Log("Rotation Started");
+            if (rotationCoroutine == null)
+            {
+                rotationCoroutine = StartCoroutine(RotateSequence());
+            }
+        }
     }
-
+    //Stop Rotation of Tiles
     public void StopRotation()
     {
         Debug.Log("Rotation Finished");
@@ -118,24 +125,18 @@ public class Shake : MonoBehaviour
             isRotating = false;       
         }
     }
-    public void StartRotation()
-    {
-        if (shakeCount > 0)
-        {
-            Manager.gameObject.GetComponent<CooldownShake>().shakeCounter= shakeCount-1;
-            shakeCount=shakeCount-1;
-            StartRotationC();
-        }
-    }
+    
 
     void FixedUpdate()
     {
         if (isRotating == true)
         {
+            Debug.Log("Disable Button");
             rotateButton.enabled = false;
         }
         else
         {
+            Debug.Log("Enable Button");
             rotateButton.enabled = true;
         }
 
