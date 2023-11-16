@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 //using TreeEditor;
 //using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
@@ -13,10 +15,10 @@ public class Movement : MonoBehaviour
     //
     Vector3 up = Vector3.zero, right = new Vector3(0f, 90f, 0f), down = new Vector3(0f, 180f, 0f), left = new Vector3(0f, 270f, 0f), currentDirection = Vector3.zero;
 
-    Vector3 nextPos, destination, direction;
+    Vector3 currentPosition, targetPosition, nextPos, destination, direction;
 
     public float speed = 5f;
-
+    bool activeMovement = false;
     bool canMove;
     float rayLength = 1.25f;
 
@@ -41,50 +43,11 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        //Collision Check
-        Ray myRay = new Ray(transform.position + new Vector3(0f, -0.35f, 0f), transform.forward);
-        Ray myRay2 = new Ray(transform.position + new Vector3(0f, -0.35f, 0f), -transform.forward);
-        Ray myRay3 = new Ray(transform.position + new Vector3(0f, -0.35f, 0f), transform.right);
-        Ray myRay4 = new Ray(transform.position + new Vector3(0f, -0.35f, 0f), -transform.forward);
-        RaycastHit hit;
-        Debug.DrawRay(myRay.origin, myRay.direction, Color.green);
-        Debug.DrawRay(myRay2.origin, myRay2.direction, Color.green);
-        Debug.DrawRay(myRay3.origin, myRay3.direction, Color.green);
-        Debug.DrawRay(myRay4.origin, myRay4.direction, Color.green);
-        if (Physics.Raycast(myRay, out hit, rayLength))
-        {
-            if (hit.collider.tag == "Obstacle")
-            {
-                Debug.DrawRay(myRay.origin, myRay.direction, Color.red);
-                
-            }
-        }
-        if (Physics.Raycast(myRay2, out hit, rayLength))
-        {
-            if (hit.collider.tag == "Obstacle")
-            {              
-                Debug.DrawRay(myRay2.origin, myRay2.direction, Color.red);
-            }
-        }
-        if (Physics.Raycast(myRay3, out hit, rayLength))
-        {
-            if (hit.collider.tag == "Obstacle")
-            {
-                Debug.DrawRay(myRay3.origin, myRay3.direction, Color.red);              
-            }
-        }
-        if (Physics.Raycast(myRay4, out hit, rayLength))
-        {
-            if (hit.collider.tag == "Obstacle")
-            {              
-                Debug.DrawRay(myRay4.origin, myRay4.direction, Color.red);
-            }
-        }
         Move();
     }
 
     
-    void Move()
+    public void Move()
     {
         //
         if (Input.touches.Length > 0)
@@ -105,52 +68,119 @@ public class Movement : MonoBehaviour
 
                 //normalize the 2d vector
                 currentSwipe.Normalize();
-
-                if (currentSwipe.y < -0.5f)
-                {              
-                    if(currentSwipe.x < -0.5f && transform.position.x > -2.4f)
+                if (activeMovement == false)
+                {
+                    if (currentSwipe.y < -0.5f)
                     {
-                        //Debug.Log("DOWN LEFT swipe");
-
-                        nextPos = Vector3.left + new Vector3(-0.2f, 0f, 0f);
-                        currentDirection = left;
-                        canMove = true;
+                        if (currentSwipe.x < -0.5f && transform.position.x > -2.4f)
+                        {
+                            activeMovement = true;
+                            //Debug.Log("DOWN LEFT swipe");
+                            currentDirection = left;
+                            transform.localEulerAngles = currentDirection;
+                            if (Valid())
+                            {
+                                targetPosition += Vector3.left + new Vector3(-0.2f, 0f, 0f);
+                                StartCoroutine(LerpPosition(targetPosition, 1));
+                            }
+                            else
+                            {
+                                shake.ShakeCam();
+                                activeMovement = false;
+                            }
+                        }
+                        else if (currentSwipe.x > 0.5f && transform.position.z > -2.4f)
+                        {
+                            activeMovement = true;
+                            //Debug.Log("DOWN RIGHT swipe");
+                            currentDirection = down;
+                            transform.localEulerAngles = currentDirection;
+                            if (Valid())
+                            {
+                                targetPosition += Vector3.back + new Vector3(0f, 0f, -0.2f);
+                                StartCoroutine(LerpPosition(targetPosition, 1));
+                            }
+                            else
+                            {
+                                shake.ShakeCam();
+                                activeMovement = false;
+                            }
+                        }
                     }
-                    else if(currentSwipe.x > 0.5f && transform.position.z > -2.4f)
-                    {                       
-                        //Debug.Log("DOWN RIGHT swipe");
-
-                        nextPos = Vector3.back + new Vector3(0f, 0f, -0.2f);
-                        currentDirection = down;
-                        canMove = true;
-                    }
-                }
-                else if(currentSwipe.y > 0.5f)
-                {                   
-                    if (currentSwipe.x < -0.5f && transform.position.z < 2.4f)
+                    else if (currentSwipe.y > 0.5f)
                     {
-                        //Debug.Log("UP LEFT swipe");
-
-                        nextPos = Vector3.forward + new Vector3(0f, 0f, 0.2f);
-                        currentDirection = up;
-                        canMove = true;
-                    }
-                    else if (currentSwipe.x > 0.5f && transform.position.x < 2.4f)
-                    {
-                        //Debug.Log("UP RIGHT swipe");
-
-                        nextPos = Vector3.right + new Vector3(0.2f, 0f, 0f);
-                        currentDirection = right;
-                        canMove = true;
+                        if (currentSwipe.x < -0.5f && transform.position.z < 2.4f)
+                        {
+                            activeMovement = true;
+                            //Debug.Log("UP LEFT swipe");
+                            currentDirection = up;
+                            transform.localEulerAngles = currentDirection;
+                            if (Valid())
+                            {
+                                targetPosition += Vector3.forward + new Vector3(0f, 0f, 0.2f);
+                                StartCoroutine(LerpPosition(targetPosition, 1));
+                            }
+                            else
+                            {
+                                shake.ShakeCam();
+                                activeMovement = false;
+                            }
+                        }
+                        else if (currentSwipe.x > 0.5f && transform.position.x < 2.4f)
+                        {
+                            activeMovement = true;
+                            //Debug.Log("UP RIGHT swipe");
+                            currentDirection = right;
+                            transform.localEulerAngles = currentDirection;
+                            if (Valid())
+                            {
+                                targetPosition += Vector3.right + new Vector3(0.2f, 0f, 0f);
+                                StartCoroutine(LerpPosition(targetPosition, 1));
+                            }
+                            else
+                            {
+                                shake.ShakeCam();
+                                activeMovement = false;
+                            }
+                        }
                     }
                 }
             }
         }
 
+        bool Valid()
+        {
+            Ray myRay = new Ray(transform.position + new Vector3(0f, -0.25f, 0f), transform.forward);
+            RaycastHit hit;
+            Debug.DrawRay(myRay.origin, myRay.direction, Color.red);
 
+            if (Physics.Raycast(myRay, out hit, rayLength))
+            {
+                if (hit.collider.tag == "Obstacle")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
-        transform.position = Vector3.MoveTowards(transform.position, destination, speed * Time.deltaTime);
-
+        IEnumerator LerpPosition(Vector3 targetPosition, float duration)
+        {
+            float time = 0;
+            Vector3 startPosition = transform.position;
+            while (time < duration)
+            {
+                float t = time / duration;
+                //t = t * t * (3f - 2f * t);
+                //t = (float)Math.Pow(2, 10 * t - 10);
+                t= (float) (t < 0.5 ? 8 * t * t * t * t : 1 - Math.Pow(-2 * t + 2, 4) / 2);
+                transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            activeMovement = false;
+            transform.position = targetPosition;
+        }
         //// Check for touch input.
         //if (Input.touchCount > 0)
         //{
@@ -244,42 +274,25 @@ public class Movement : MonoBehaviour
         //    //}
 
 
-        if (Vector3.Distance(destination, transform.position) <= 0.00001f)
-        {
-            transform.localEulerAngles = currentDirection;
-            if (canMove)
-            {
-                if (Valid())
-                {
-                    destination = transform.position + nextPos;
-                    direction = nextPos;
-                    canMove = false;
-                }
-                else
-                {
-                    shake.ShakeCam();
-                    canMove = false;
-                }
-            }
+        //if (Vector3.Distance(destination, transform.position) <= 0.00001f)
+        //{
+        //    transform.localEulerAngles = currentDirection;
+        //    if (canMove)
+        //    {
+        //        if (Valid())
+        //        {
+        //            destination = transform.position + nextPos;
+        //            direction = nextPos;
+        //            canMove = false;
+        //        }
+        //        else
+        //        {
+        //            shake.ShakeCam();
+        //            canMove = false;
+        //        }
+        //    }
 
-        }
-    }
-
-
-    bool Valid()
-    {
-        Ray myRay = new Ray(transform.position + new Vector3(0f, -0.25f, 0f), transform.forward);
-        RaycastHit hit;
-        Debug.DrawRay(myRay.origin, myRay.direction, Color.red);
-
-        if(Physics.Raycast(myRay, out hit, rayLength))
-        {
-            if(hit.collider.tag == "Obstacle")
-            {               
-                return false;
-            }
-        }
-        return true;
+        //}
     }
 }
 

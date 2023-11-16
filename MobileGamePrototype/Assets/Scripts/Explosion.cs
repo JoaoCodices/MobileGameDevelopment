@@ -47,6 +47,7 @@ public class Explosion : MonoBehaviour
                 {
                     Destroy(collision.gameObject);
                 }
+                
             }
         }
     }
