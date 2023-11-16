@@ -172,7 +172,6 @@ public class Movement : MonoBehaviour
             {
                 float t = time / duration;
                 //t = t * t * (3f - 2f * t);
-                //t = (float)Math.Pow(2, 10 * t - 10);
                 t= (float) (t < 0.5 ? 8 * t * t * t * t : 1 - Math.Pow(-2 * t + 2, 4) / 2);
                 transform.position = Vector3.Lerp(startPosition, targetPosition, t);
                 time += Time.deltaTime;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class Explosion : MonoBehaviour
     Vector3 cubesPivot;
 
     public GameObject cubeMesh;
+    static Rigidbody rigidbody;
 
+    float t;
     public float explosionForce = 50f;
     public float explosionRadius = 4f;
     public float explosionUpward = 0.4f;
@@ -20,6 +23,7 @@ public class Explosion : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         valid = true;
         // Calculate pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 2;
@@ -30,8 +34,19 @@ public class Explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rigidbody.drag > 0.01f)
+        {
+            t = transform.position.y - 2f;
+            t = t * t;
+            float valueToLerp = Mathf.Lerp(0, rigidbody.drag, t);
+            rigidbody.drag = valueToLerp;
+            Debug.Log(valueToLerp);
+        }
     }
-
+    //public static double EaseInExpo(double x)
+    //{
+    //    return x == 0 ? 0 : Math.Pow(2, 10 * x - 10);
+    //}
     private void OnCollisionEnter(Collision collision)
     {
         if (valid)
