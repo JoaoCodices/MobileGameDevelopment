@@ -29,6 +29,7 @@ public class Settings : MonoBehaviour
     public void OpenSettings()
     {
         settingsMenu.SetActive(true);
+        Handheld.Vibrate();
     }
     public void CloseSettings()
     {
