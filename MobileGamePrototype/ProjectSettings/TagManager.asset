@@ -11,6 +11,8 @@ TagManager:
   - Obstacle
   - ScreenShake
   - Manager
+  - SceneManager
+  - Map
   layers:
   - Default
   - TransparentFX

@@ -24,10 +24,7 @@ public class SceneManagement : MonoBehaviour
     public void OnLoss()
     {
         SetPlayer();
-        if (player.GetComponent<Score>().lives <= 0)
-        {
-            SceneManager.LoadScene(2, LoadSceneMode.Single);
-        }
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
     public void SetPlayer()
     {

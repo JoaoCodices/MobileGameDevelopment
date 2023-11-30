@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.Analytics;
+using UnityEditor;
 
 public class Score : MonoBehaviour
 {
@@ -11,9 +14,6 @@ public class Score : MonoBehaviour
     public TMP_Text coinsText;
     public TMP_Text hsText;
     public TMP_Text livesText;
-    //STORE
-    public TMP_Text StorelivesText;
-    public TMP_Text StorecoinsText;
     //
     public float scoreRate = 1.0f; // Score increase rate in points per second
     public float score = 0.0f;
@@ -22,6 +22,9 @@ public class Score : MonoBehaviour
     public int coins;
     //
     private GameObject Manager;
+    //LOSS SYSTEM
+    public GameObject Gameover;
+    public bool firstLoss = true;
 
     private void Start()
     {
@@ -42,6 +45,36 @@ public class Score : MonoBehaviour
 
         // Update the TextMeshProUGUI Text with the new score
         UpdateScoreText();
+
+
+        if (lives == 0 && firstLoss == true)
+        {
+            GameOver();
+        }
+        else if (lives == 0 && firstLoss == false)
+        {
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagement>().OnLoss();
+        }
+
+    }
+    public void RemoveLife()
+    {
+        lives--;
+    }
+    public void GameOver()
+    {
+        Debug.Log("WATCH AD MENU");
+        Time.timeScale = 0f;
+        Gameover.SetActive(true); 
+    }
+ 
+    public void ExtraLife()
+    {
+        Debug.Log("REWARD AD +1 LIFE");
+        lives++;
+        Time.timeScale = 1f;
+        Gameover.SetActive(false);
+        firstLoss = false;
     }
 
     private void UpdateScoreText()

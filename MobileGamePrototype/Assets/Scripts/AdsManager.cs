@@ -39,27 +39,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
-        if (/*scene.name == "IntroScene" ||*/ scene.name == "DeathScene")
-        {
-            Debug.Log("IntroScene");
-            GetComponent<AdsBanner>().enabled = true;
-        }
-        else
-        {
-            GetComponent<AdsBanner>().enabled = false;
-        }
+        Debug.Log("IntroScene");
+        GetComponent<AdsBanner>().enabled = true;
     }
     private void Update()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        if (scene.name == "IntroScene" || scene.name == "DeathScene")
-        {
-            GetComponent<AdsBanner>().enabled = true;
-        }
-        else
-        {
-            GetComponent<AdsBanner>().HideBannerAd();
-            GetComponent<AdsBanner>().enabled = false;
-        }
     }
 }

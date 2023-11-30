@@ -2104,6 +2104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storeMenu: {fileID: 6093864034531182098}
+  StorelivesText: {fileID: 3321709333153824889}
+  StorecoinsText: {fileID: 8951133206383871759}
+  StoreclearsText: {fileID: 5724373783048202090}
 --- !u!1 &7631554761550650484
 GameObject:
   m_ObjectHideFlags: 0

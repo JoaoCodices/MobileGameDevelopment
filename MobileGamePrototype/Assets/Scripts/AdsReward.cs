@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using Unity.VisualScripting;
 
 public class AdsReward : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
@@ -40,6 +41,7 @@ public class AdsReward : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
         
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
+
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
@@ -49,6 +51,7 @@ public class AdsReward : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
+            GameObject.FindGameObjectWithTag("P1").GetComponent<Score>().ExtraLife();
         }
     }
 
