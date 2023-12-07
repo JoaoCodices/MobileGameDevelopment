@@ -15,8 +15,9 @@ public class DataManager : MonoBehaviour
     [HideInInspector] public int Lives;
     [HideInInspector] public int Coins;
     [HideInInspector] public int Theme;
+    [HideInInspector] public int ShowAds;
 
-    private void Awake()
+    private void Start()
     {
         if (Instance != null)
         {
@@ -40,6 +41,7 @@ public class DataManager : MonoBehaviour
         public int Lives;
         public int Coins;
         public int Theme;
+        public int ShowAds;
     }
 
     public void WriteData()
@@ -53,6 +55,7 @@ public class DataManager : MonoBehaviour
         data.Lives = Lives;
         data.Coins = Coins;
         data.Theme = Theme;
+        data.ShowAds = ShowAds;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
@@ -74,6 +77,7 @@ public class DataManager : MonoBehaviour
             Lives = data.Lives;
             Coins = data.Coins;
             Theme = data.Theme;
+            ShowAds= data.ShowAds;
         }
     }
 }

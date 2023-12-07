@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Tile
-  - Coin
-  - P1
-  - RotateButton
-  - Obstacle
-  - ScreenShake
-  - SceneManager
-  - Map
-  - DataManager
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -22,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - T
+  - 
   - 
   - 
   - 
@@ -49,7 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer 1
-    uniqueID: 3012859119
     locked: 0

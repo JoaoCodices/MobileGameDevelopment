@@ -10,35 +10,20 @@ public class SceneManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       //SetPlayer();
     }
-    public void OnPlay()
+    public void LoadMain()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
-        SetPlayer();
     }
     // Update is called once per frame
     void Update()
     {
     }
-    public void OnLoss()
+    public void LoadLoss()
     {
-        SetPlayer();
         SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
-    public void SetPlayer()
-    {
-        player = GameObject.FindGameObjectWithTag("P1");
-        if (player != null)
-        {       
-            
-        }
-        else
-        {
-            Debug.LogError("No Player Found!");
-        }
-    }
-    public void BacktoStart()
+    public void LoadIntro()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
