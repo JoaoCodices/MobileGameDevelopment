@@ -57,13 +57,17 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 ![SS_3](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/15ffaf09-2b5c-4646-a973-991fbb64397d)
 
 ## Week 4
-
+- No Changes
 
 ## Week 5
 
-
+- No Changes
 
 ## Week 6
 
+- No Changes
 
-## Week 10 - Hand In
+## Week 7 - Hand In
+
+
+
