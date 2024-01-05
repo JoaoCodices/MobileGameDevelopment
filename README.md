@@ -65,7 +65,22 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 
 ## Week 6
 
-- No Changes
+### Mobile Controls
+- Implemented Finished Swipe Mechanic with better response rate.
+![devenv_AUq7oblqkg](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/96b5e38f-04ec-4fd0-96c3-42e4bd7c3e1d)
+![devenv_iJIWPJc8Jo](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/de83a20f-406f-498a-b2fe-c9c99b6b762a)
+![devenv_okkbK4tY3Y](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/75a1b61b-62ee-47d1-9542-0b934eba0404)
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/e2e22b69-03b2-4789-9b7c-ffe7e1d54b02)
+
+
+- Implemented Accelerometer Input for Rotating the Tiles
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/aa2bb373-3bb0-4c40-b363-26489cd1da21)
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/081ea01c-a13e-4110-b946-f3cd5752a99d)
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/4a12e7b8-0be9-411d-b15f-df5febbd2229)
+
+- Implemented Vibration to Device.
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/883bcf01-ec1c-41be-accf-1333a712f858)
+
 
 ## Week 7 - Hand In
 
@@ -82,6 +97,35 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 - Implemented Banner Ads to The Scenes as well as the ability to Purchase a No ADS Experience.
 
 - Implemented Reward Ads when the Player Reaches 0 Lives for the 1st Time. This grants the player 1 extra life one time.
-![devenv_ASkjgkaVQd](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/7d6f1c4a-4914-4418-8b3a-462bb667c4a2)
+![devenv_ASkjgkaVQd](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/7d6f1c4a-4914-4418-8b3a-462bb667c4a2)![Unity_26eCv3stLb](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/fa21b54e-68fa-41b7-a645-8b2e396eaf4e)
 
-![Unity_26eCv3stLb](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/fa21b54e-68fa-41b7-a645-8b2e396eaf4e)
+### Obstacles
+- Implemented a Obstacle Manager which Controls the Spawning of Obstacle Blocks, this takes in all the tile Positions and Instanciates a Block a set distance above it, according to a timed cooldown period that decreases the higher the player score.
+![Unity_m8lojYdRn3](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/950d63da-77c9-4cf2-b2ef-31f0b4a2ee33)
+![devenv_h9k1w21tjY](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/c6feb84f-15c2-4fb7-b98a-7489919e1c71)
+
+- The obstacles detect collisions with other gameobject and have different responses:
+   - Player: deals damage to player and explodes.
+   - Coins: destroys coins
+   - Tiles: Explodes
+![devenv_PFQ51GCxr1](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/753fa9d1-9cae-46f4-b9a7-495cddbf160b)
+
+### Coins
+- Implemented a Coins Spawner just like the Obstacles.
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/e257d108-fde9-40ed-9c96-af543d4bea03)
+
+#### The Obstacles once colliding with the tiles Explode into small cubes meanwhile, The Coins start to spin around
+![Unity_SzJthBfoqy](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/961ed36f-394b-4dab-9210-bb97d673890c)
+
+
+### Cinemachine Implementation
+
+- Implemented Shake To the Camera as a function that can be called from other Scripts to trigger a shake of Set Intensity and Duration
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/b63065cb-7db3-42f9-a079-5188c92ea77a)
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/8deb4c1d-90b1-4cf9-b3ac-4236e7391864)
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/b773cd68-6380-4180-af90-49d8420a83a5)
+
+### Twitter Score Sharing
+![image](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/5808807d-3ca9-4328-9d14-d04f83282248)
+
+
