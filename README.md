@@ -84,3 +84,4 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 - Implemented Reward Ads when the Player Reaches 0 Lives for the 1st Time. This grants the player 1 extra life one time.
 ![devenv_ASkjgkaVQd](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/7d6f1c4a-4914-4418-8b3a-462bb667c4a2)
 
+![Unity_26eCv3stLb](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/fa21b54e-68fa-41b7-a645-8b2e396eaf4e)
