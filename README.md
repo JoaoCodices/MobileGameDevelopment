@@ -55,3 +55,15 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 - Started working on the player detection for the obstructed tiles using raycast sensors for collisions.
 
 ![SS_3](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/15ffaf09-2b5c-4646-a973-991fbb64397d)
+
+## Week 4
+
+
+## Week 5
+
+
+
+## Week 6
+
+
+## Week 10 - Hand In
