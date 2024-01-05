@@ -69,5 +69,15 @@ A Game where the player has to move survive on a set of tiles for as long as pos
 
 ## Week 7 - Hand In
 
+### Store SetUp
+- Split the Store between IAP Store and In-Game Store, to simplify user experience.
+
+![Unity_ob4wX31vaa](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/e7a64b44-2234-432e-98d6-0cef5f6339d6)
+
+![Unity_FahCqX85Nk](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/4d912abb-a966-464a-8aec-a005b1b130da)
+
+- Implemented Google Play Console IAP into my Game
+![msedge_Co7Nx6uVPE](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/35e73a45-450d-4649-bb9f-40b595e625cc)
+![Unity_UUimsPyARi](https://github.com/JoaoCodices/MobileGameDevelopment/assets/91282174/1fb25398-caa4-4f4e-8ecc-d1e0c4f0eca2)
 
 
